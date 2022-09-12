@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: Install programs
+    apt:
+      update_cache: yes
+      name:
+        - htop
+        - screen
+      state: latest      
