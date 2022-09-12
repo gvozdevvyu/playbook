@@ -1,6 +1,7 @@
 ---
-- tasks:
+- hosts: all
+  tasks:
   - name: Install Programms 
     ansible.windows.win_package:
-      path:
+      path: C:\temp.7z.exe
       state: present
