@@ -1,3 +1,6 @@
 ---
 - tasks:
   - name: Install Programms 
+    ansible.windows.win_package:
+    path:
+    state: present
