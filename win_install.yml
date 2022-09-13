@@ -3,5 +3,7 @@
   tasks:
   - name: Install Programms 
     ansible.windows.win_package:
-      path: C:\temp.7z.exe
+      path: C:\Temp\7z.exe
+      product_id: 7-zip
+      arguments: /S
       state: present
