@@ -4,11 +4,32 @@
   tasks:
   - name: Create a symbolic link
     file:
-        src: /
-        dest: /
+        src: /lib/x86_64-linux-gnu/libudev.so.1
+        dest: /lib/x86_64-linux-gnu/libudev.so.0
         state: link
-  - name: 
-  - name: Update system    
+        
+  - name: Create folder
+    file:
+        dest: /etc/xdg/solid
+        state: directory
+        
+  - name: Create file mount.conf 
+    lineinfile:
+        path: /etc/xdg/solid/mount.conf
+        line: mountRoot=/media
+        create: yes
+        
+  - name: Update fstab
+    lineinfile:
+        path: /etc/fstab
+        line: dev/sd* /*media/*  auto  owner,group,nodev,noexec,noauto,defaults  0  0
+  
+  - name: Change permission
+    file:
+        path: /media
+        mode: 0777
+        
+  - name: Upgrade system    
     apt:
-      update_cache: yes
-      upgrade: yes
+        update_cache: yes
+        upgrade: yes
