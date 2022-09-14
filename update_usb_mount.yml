@@ -2,6 +2,12 @@
 - hosts: all
   gather_facts: false
   tasks:
-  - name: Update USB mount
+  - name: Create a symbolic link
+    file:
+        src: /
+        dest: /
+        state: link
+  - name: Update system    
     apt:
       update_cache: yes
+      upgrade: yes
