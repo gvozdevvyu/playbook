@@ -7,6 +7,7 @@
         src: /
         dest: /
         state: link
+  - name: 
   - name: Update system    
     apt:
       update_cache: yes
